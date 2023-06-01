@@ -11,16 +11,16 @@
                 padding: 20px;
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-end;
                 height: 100vh;
             }
             
             .container {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
+                align-items: flex-end;
+                text-align: right;
+                margin-right: auto;
             }
             
             .full-name {
@@ -65,11 +65,18 @@
                 font-family: "Font Awesome 5 Free";
                 margin-right: 5px;
             }
+            
+            .photo {
+                max-width: 200px;
+                height: auto;
+                margin-bottom: 20px;
+            }
         </style>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
     <body>
         <div class="container">
+            <img class="photo" src="foto.jpg" alt="My Photo">
             <div class="full-name">
                 <span class="first-name">Капацина</span>
                 <span class="last-name">Александр</span>
@@ -83,9 +90,7 @@
             <div class="main">
                 <h2>Получить данные</h2>
                 <button class="btn" onclick="myFunction()">Получить</button>
-                <ul id="demo">
-
-                </ul>
+                <ul id="demo"></ul>
             </div>
         </div>
 
