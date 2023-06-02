@@ -126,7 +126,7 @@
     <script>
         function autoRefresh() {
               myFunction();
-        setTimeout(autoRefresh, 10000);
+        setTimeout(autoRefresh, 5000);
       }
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
@@ -145,6 +145,10 @@
                 }
             })()
         }
+        window.onload = function () {
+            autoRefresh();
+          };
+        
     </script>
 </body>
 </html>
