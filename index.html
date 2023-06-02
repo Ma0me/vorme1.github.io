@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>My title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .left-section {
+            text-align: left;
+            margin-right: 20px;
+        }
+
+        .full-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            padding: 10px;
+            margin-right: 20px;
+            margin-right: 200px;
+            max-width: 500px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .first-name {
+            background-image: linear-gradient(to right, #FF3366, #FF9933, #FFFF33, #33FF33, #3366FF, #9933FF, #FF33FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .last-name {
+            background-image: linear-gradient(to right, #FF3366, #FF9933, #FFFF33, #33FF33, #3366FF, #9933FF, #FF33FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+            margin-right: 20px;
+            margin-right: 200px;
+            max-width: 500px;
+        }
+
+        .email,
+        .phone {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .email-ad,
+        .phone-ad {
+            color: #777;
+        }
+
+        .email::before,
+        .phone::before {
+            content: attr(data-icon);
+            font-family: "Font Awesome 5 Free";
+            margin-right: 5px;
+        }
+
+        .photo {
+            max-width: 600px;
+            margin-left: 400px;
+        }
+
+        .main {
+            text-align: left;
+            margin-right: 200px;
+            max-width: 500px;
+        }
+
+        .gif {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="full-name">
+                <span class="first-name">Капацина</span>
+                <span class="last-name">Александр</span>
+            </div>
+            <div class="contact-info">
+                <span class="email" data-icon="&#xf0e0;">Email:</span>
+                <span class="email-ad">kapazina-2001@mail.ru</span>
+                <span class="phone" data-icon="&#xf098;">Phone:</span>
+                <span class="phone-ad">+7 (901) 720-26-21</span>
+            </div>
+            <div class="main">
+                <h2>Получить данные</h2>
+                <button class="btn" onclick="myFunction()">МЯУ!!!</button>
+                <ul id="demo"></ul>
+            </div>
+            <div class="gif">
+                <img src="gif.gif" alt="GIF">
+            </div>
+        </div>
+        <img class="photo" src="photo.jpg" alt="My Photo">
+    </div>
+
+    <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        function myFunction() {
+            (async () => {
+                let response = await fetch('https://kav-api.kovalev.team/servodrive/lastActualData?servoDriveId=1');
+                let el = document.getElementById('demo')
+                el.innerHTML = ""
+                let text = await response.text(); // прочитать тело ответа как текст
+                for (const [key, value] of Object.entries(JSON.parse(text)[0])) {
+                    const newEl = document.createElement("li")
+                    newEl.appendChild(document.createTextNode(`${key}: ${value}`))
+                    el.appendChild(newEl)
+                    await sleep(100)
+                }
+            })()
+        }
+    </script>
+</body>
+</html>
