@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>My title</title>
+    <title>Хочу 45</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -124,6 +124,10 @@
     </div>
 
     <script>
+        function autoRefresh() {
+              myFunction();
+        setTimeout(autoRefresh, 10000);
+      }
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
